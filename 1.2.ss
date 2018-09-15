@@ -51,3 +51,49 @@
     ((= coin-kind 3) 10)
     ((= coin-kind 4) 25)
     ((= coin-kind 5) 50)))
+
+; exercise 1.11 - recursive process
+(define (f1-greater-n fac1 fac2 fac3)
+  (+ 
+    fac1
+    (* 2 fac2)
+    (* 3 fac3)))
+  
+(define (f1 n)
+  (if (< n 3)
+    n
+    (f1-greater-n
+      (f1 (- n 1))
+      (f1 (- n 2))
+      (f1 (- n 3)))))
+
+; exercise 1.11 - iterative process
+(define (f1-iter n)
+  (f1-iter-rec 0 1 2 n))
+
+(define (f1-iter-rec minus3 minus2 minus1 currentN)
+  (if (< currentN 3)
+    minus1
+    (f1-iter-rec
+      minus2
+      minus1
+      (f1-greater-n
+        minus1
+        minus2
+        minus3)
+      (- currentN 1))))
+
+; exercise 1.12
+(define (pascal-elem line column)
+  (cond
+    ((= line column 1) 1)
+    ((and
+       (= line 1)
+       (not (= column 1)))
+     0)
+    (else
+      (+
+        (pascal-elem (- line 1) column)
+        (pascal-elem (- line 1) (- column 1))))))
+
+
