@@ -54,11 +54,11 @@
 
 ; exercise 1.11 - recursive process
 (define (f1-greater-n fac1 fac2 fac3)
-  (+ 
+  (+
     fac1
     (* 2 fac2)
     (* 3 fac3)))
-  
+
 (define (f1 n)
   (if (< n 3)
     n
@@ -95,5 +95,4 @@
       (+
         (pascal-elem (- line 1) column)
         (pascal-elem (- line 1) (- column 1))))))
-
 
